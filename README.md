@@ -1,3 +1,10 @@
+Project Goals:
+    - Improve personal ability to write react applications.
+    - Learn to use and implement drag and drop functionality.
+    - To Practice building react app components without styled-components
+    ---
+    - Create and setup a python flask backend. Will be done in seperate repository.
+
 #Jan 12 2021:
     # What was done.
         Created Basic Layout Of Trello Clone.
@@ -13,7 +20,11 @@
         - Ensure state consistency.
 
 
-
+---
+#Packages Used:
+    - React
+    - ReactDnD
+    - React Hook Form
 ---
 Color Pallete:
 Ivory: #F5F9E9
