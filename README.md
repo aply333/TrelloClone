@@ -26,9 +26,14 @@ Creating custom hooks to manage board state.
    * ReactDnD
    * React Hook Form
 ---
-Color Pallete:
-Ivory: #F5F9E9
-Ebony: #515751
-Cadet: #596869
-Kombu: #36453B
-Sage: #C2C1A5
+## Color Pallete:
+1. Ivory: 
+   * #F5F9E9
+2. Ebony: 
+   * #515751
+3. Cadet: 
+   * #596869
+4. Kombu:
+   * #36453B
+5. Sage: 
+   * #C2C1A5
