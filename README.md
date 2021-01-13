@@ -1,11 +1,11 @@
-Project Goals:
+#Project Goals:
     - Improve personal ability to write react applications.
     - Learn to use and implement drag and drop functionality.
     - To Practice building react app components without styled-components
     ---
     - Create and setup a python flask backend. Will be done in seperate repository.
 
-#Jan 12 2021:
+##Jan 12 2021:
     # What was done.
         Created Basic Layout Of Trello Clone.
         Worked out state logic for cards and columns.
@@ -21,7 +21,7 @@ Project Goals:
 
 
 ---
-#Packages Used:
+##Packages Used:
     - React
     - ReactDnD
     - React Hook Form
