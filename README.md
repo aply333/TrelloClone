@@ -31,7 +31,7 @@ Created Custome Hook To Manage Card/Column State:
    * This function is internal to the custom hook.
    * It will loop through a given array, check if the index of the array matches the id. If id does not match, it will then update and correct the Id.
 ---
-Replace old state management, with the new custome hooks. Cleaning up the code.
+Replaced old state management with the new custome hooks. Cleaning up the code.
 
 ## Jan 11 2021:
 ### What was done.
