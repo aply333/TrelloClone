@@ -6,8 +6,6 @@ import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { useCardState } from "./customHooks/cardManage";
 
-
-
 const testdata = [
   {
     id: 0,
@@ -84,67 +82,36 @@ const testdata = [
 ];
 
 function App() {
-  const [colState, setColState] = useState(testdata);
-  const [test, setTest] = useState(colState);
+  // const [colState, setColState] = useState(testdata);
 
-  console.log(colState);
+  const [
+    cardState,
+    insertNewColumn,
+    insertNewCard,
+    relocateCard,
+  ] = useCardState(testdata);
+  const [dragId, setDragId] = useState();
 
   const newCol = (title) => {
-    let length = colState.length;
-    setColState([
-      ...colState,
-      {
-        id: length,
-        title: title,
-        cards: [],
-      },
-    ]);
+    insertNewColumn(title);
   };
 
   const newCard = (location, data) => {
-    let len = colState[location].cards.length;
-    let update = colState;
-    let today = new Date();
-    update[location].cards = [
-      ...update[location].cards,
-      {
-        id: len,
-        title: data.card_title,
-        date: `${
-          today.getMonth() + 1
-        }-${today.getDate()}-${today.getFullYear()}`,
-        description: data.description,
-      },
-    ];
-    setColState(update);
-    console.log(colState);
+    insertNewCard(location, data);
   };
 
-  const [result, Test] = useCardState(colState[0].cards)
-  const [dragId, setDragId] = useState();
-  const moveCard = (card_id, destination) => {
-    // const card_store = colState[dragId[0]].cards[dragId[1]]
-    // const update = colState
-    // delete update[dragId[0]].cards[dragId[1]]
-    // let new_id = colState[destination].cards.length
-    // console.log("new id",new_id)
-    // card_store.id = new_id
-    // update[destination].cards = [
-    //   ...update[destination].cards, card_store
-    // ]
-    // setColState(update)
-    
-    console.log("hookTest",result)
+  
+  const moveCard = (destination) => {
+    console.log("DE FED",destination)
+    relocateCard( dragId, destination);
   };
-
-  console.log(dragId)
 
   return (
     <>
       <NavBar newCol={newCol} />
       <DndProvider backend={HTML5Backend}>
         <Board>
-          {colState.map((col) => (
+          {cardState.map((col) => (
             <Col
               data={col}
               key={col.id}
@@ -152,7 +119,6 @@ function App() {
               newCard={newCard}
               moveCard={moveCard}
               setDragId={setDragId}
-              dragId={dragId}
             />
           ))}
         </Board>

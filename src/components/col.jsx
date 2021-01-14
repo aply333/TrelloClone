@@ -5,10 +5,13 @@ import Colors from "../assets/colors";
 import { ITEM_TYPES } from "../constants/itemTypes";
 import Card from "./card";
 
-const Col = ({ children, data, columnId, newCard, setDragId, dragId, moveCard }) => {
+const Col = ({ children, data, columnId, newCard, setDragId, moveCard }) => {
   const [{ isOver }, drop] = useDrop({
     accept: ITEM_TYPES.CARD,
-    drop: () =>{moveCard(dragId, columnId)},
+    drop: () =>{
+      console.log("COLUMN ID",columnId)
+      moveCard(columnId)
+    },
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
     }),
@@ -63,7 +66,6 @@ const Col = ({ children, data, columnId, newCard, setDragId, dragId, moveCard })
 
   return (
     <div
-      onMouseEnter={()=>{console.log('COL',columnId)}}
       ref={drop}
       style={{
         backgroundColor: isOver ? Colors.neutral_accent : Colors.light,
@@ -104,7 +106,6 @@ const Col = ({ children, data, columnId, newCard, setDragId, dragId, moveCard })
           onClick={(e) => {
             e.preventDefault();
             setCardMenu(true);
-            console.log(columnId);
           }}
         >
           +
