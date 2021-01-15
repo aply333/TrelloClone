@@ -6,6 +6,30 @@
     ---
 * Create and setup a python flask backend. Will be done in seperate repository.
 
+---
+## Jan 13 2021:
+### What was done.
+* Boke up "Col.jsx" component:
+  * "innerCol.jsx": Contains column contents and drag destination for cards.
+  * "popUpMenu.jsx": Made popup menu modular, this to clean code and help keep it dry.
+* Implemented Column Draggin.
+  * "Col.jsx" Acts as both the drag and drop reference for Column dragging.
+  *  To the cardManage hook:
+    * Added "relocateColumn()," it takes two arguements, "columnId" and "desitnation."
+    * It stores the column data in a variable, then splices it out of the arrfay.
+    * Then with the splice method, inserts the column in its new location.
+    * Calls the idCorrection, to update all of the column ids. **BUG!!**
+
+### BUG FOUND:
+* "idCorrection()", is not updating Ids.
+  * I believe this is  causing the board to crash when cards are moved too much.
+  * Found it when logging column movement, the values did not reflect the new position.
+#### Possible Solution:
+* I think if rather than setting their id by the lenght of the array, simply assign by getting its index.
+  * This won't fix the idCorrection function but will potentially limit how often errors are made, along with maybe simplifying prop handling.
+
+
+---
 ## Jan 12 2021:
 ### What was done.
 Created Custome Hook To Manage Card/Column State:
@@ -30,9 +54,10 @@ Created Custome Hook To Manage Card/Column State:
 * idCorrection():
    * This function is internal to the custom hook.
    * It will loop through a given array, check if the index of the array matches the id. If id does not match, it will then update and correct the Id.
----
 Replaced old state management with the new custome hooks. Cleaning up the code.
+---
 
+---
 ## Jan 11 2021:
 ### What was done.
 Created Basic Layout Of Trello Clone.
@@ -46,7 +71,7 @@ Creating custom hooks to manage board state.
 * Improve overall performance.
 * Improve modularity.
 * Ensure state consistency.
-
+---
 
 ---
 ## Packages Used:

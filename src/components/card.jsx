@@ -12,8 +12,6 @@ const Card = ({data, setDragId, cardId, columnId}) => {
     })
   })
 
-  
-
   return (
     
       <div

@@ -82,13 +82,13 @@ const testdata = [
 ];
 
 function App() {
-  // const [colState, setColState] = useState(testdata);
 
   const [
     cardState,
     insertNewColumn,
     insertNewCard,
     relocateCard,
+    relocateColumn
   ] = useCardState(testdata);
   const [dragId, setDragId] = useState();
 
@@ -102,9 +102,12 @@ function App() {
 
   
   const moveCard = (destination) => {
-    console.log("DE FED",destination)
     relocateCard( dragId, destination);
   };
+
+  const moveColumn =(destination) =>{
+    relocateColumn(dragId[0], destination)
+  }
 
   return (
     <>
@@ -118,6 +121,7 @@ function App() {
               columnId={col.id}
               newCard={newCard}
               moveCard={moveCard}
+              moveColumn={moveColumn}
               setDragId={setDragId}
             />
           ))}

@@ -10,6 +10,7 @@ export function useCardState(initialState) {
         arr.id = i;
       }
     }
+    console.log("idCorrection Return:",arr)
     return arr;
   };
 
@@ -59,5 +60,20 @@ export function useCardState(initialState) {
     }
   }
 
-  return [cardState, insertNewColumn, insertNewCard, relocateCard];
+  function relocateColumn(column_Id, destination) {
+    if(column_Id !== destination){
+      const column_store = cardState[column_Id]
+      const update = cardState
+      update.splice(column_Id, 1)
+      update.splice(destination, 0, column_store)
+      const idUpdate = idCorrection(update)
+      setCardState(idUpdate)
+      console.log("New Card State",cardState)
+    }
+    else{
+      console.log("Card State Stayed")
+    }
+  }
+
+  return [cardState, insertNewColumn, insertNewCard, relocateCard, relocateColumn];
 }
