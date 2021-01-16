@@ -11,7 +11,7 @@ const PopUpMenu = ({ title, stateHandler, popStateHandler, columnId }) => {
   return (
     <div
       className="inputPop"
-      style={{ backgroundColor: Colors.base, height: "20rem" }}
+      style={{ backgroundColor: Colors.base, height: "24rem" }}
     >
       <h1>{title}</h1>
       <form
@@ -23,12 +23,15 @@ const PopUpMenu = ({ title, stateHandler, popStateHandler, columnId }) => {
         }}
       >
         <input
+          style={{ margin: "0 auto",width: "95%", height: "1.5rem", }}
           type="text"
           placeholder="Card Title"
           name="card_title"
           ref={register}
         />
         <textarea
+          style={{ margin: "0 auto",width: "95%", resize: "none" }}
+          rows= "15"
           placeholder="card details"
           name="description"
           ref={register}
@@ -47,4 +50,4 @@ const PopUpMenu = ({ title, stateHandler, popStateHandler, columnId }) => {
   );
 };
 
-export default PopUpMenu
+export default PopUpMenu;

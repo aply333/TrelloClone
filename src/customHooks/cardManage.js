@@ -2,15 +2,15 @@ import { useState } from "react";
 
 export function useCardState(initialState) {
   const [cardState, setCardState] = useState(initialState);
+  const [removedCards, setRemovedCards] = useState([]);
+  const [removedColumns, setRemovedColumns] = useState([]);
 
   const idCorrection = (arr) => {
-    console.log("input data: ", arr);
     for (let i = 0; i < arr.length; i++) {
       if (arr[i].id !== i) {
-        arr.id = i;
+        arr[i].id = i;
       }
     }
-    console.log("idCorrection Return:",arr)
     return arr;
   };
 
@@ -61,19 +61,45 @@ export function useCardState(initialState) {
   }
 
   function relocateColumn(column_Id, destination) {
-    if(column_Id !== destination){
-      const column_store = cardState[column_Id]
-      const update = cardState
-      update.splice(column_Id, 1)
-      update.splice(destination, 0, column_store)
-      const idUpdate = idCorrection(update)
-      setCardState(idUpdate)
-      console.log("New Card State",cardState)
-    }
-    else{
-      console.log("Card State Stayed")
+    if (column_Id !== destination) {
+      const column_store = cardState[column_Id];
+      const update = cardState;
+      update.splice(column_Id, 1);
+      update.splice(destination, 0, column_store);
+      const idUpdate = idCorrection(update);
+      setCardState(idUpdate);
     }
   }
 
-  return [cardState, insertNewColumn, insertNewCard, relocateCard, relocateColumn];
+  function binCard(column_Id, card_Id) {
+    const card_store = cardState[column_Id].cards[card_Id];
+    const update = cardState;
+    update[column_Id].cards.splice(card_Id, 1);
+    setRemovedCards([...removedCards, card_store])
+    const old_ids = update[column_Id].cards
+    const idUpdate = idCorrection(old_ids)
+    update[column_Id].cards = idUpdate
+    setCardState(update)
+  }
+
+  function binColumn(column_Id) {
+    const update = cardState
+    setRemovedColumns([...removedColumns, update[column_Id]])
+    update.splice(column_Id, 1)
+    const idUpdate = idCorrection(update)
+    setCardState(idUpdate)
+    
+  }
+
+  return [
+    cardState,
+    insertNewColumn,
+    insertNewCard,
+    relocateCard,
+    relocateColumn,
+    removedCards,
+    removedColumns,
+    binCard,
+    binColumn
+  ];
 }

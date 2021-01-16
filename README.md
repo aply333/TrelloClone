@@ -7,6 +7,52 @@
 * Create and setup a python flask backend. Will be done in seperate repository.
 
 ---
+
+## Jan 14 2021:
+### What was done.
+* Bug Fix:
+  * Yes, id correction was causing the issue with both card and column behavior.
+  * Simple syntax error within the new Id assignement.
+    * ` arr.id = i ` needed to be ` arr[i].id = i`
+* New Bug:
+  * ~~When columns created and surpass the view window, the left most column gets clipped, and can eventually be made in-accesible.~~
+    * I believe that this is a complete css/styling issue.
+    * Possible solution:
+      * Introduce padding to the left?
+      * I need to make it so that there is a limit on the left where the columns do not get pushed beyond that point.
+  * **SOLUTION**: Using display flex to layout to place out the column layout created unwanted behavior. Simply removing it had fixed the issue.
+    * It was originally there, simply due to overthinking the layout.
+    * WIth it gone, it both works as intended and looks far more like a trello board.
+* New Features:
+  * Columns and Cards can now be deleated.
+    * Cards and Columns can be dragged to the trash bin on the bottom right corner of the view.
+    * When the Trash bin is clicked, it displays all of the cards and columns that have been deleted.
+      * These are stored in their own state objects nested with in the cardManage hook.
+  * **New Hooks:**
+    * `[removedCard, setRemovedCards]` and `[removedColumns, setRemovedCards]` are the new state objects. 
+    * `binCard()`: Takes two arguments, column_Id and card_id.
+      * It will remove the card from the `cardState` object.
+      * Calls `idCorrection()` to update the card IDs.
+      * Then the `setRemovedCards()`is called to update the `removedCards`state.
+    * `binColumn()`: Takes one argument, the column_id.
+      * This will remove the column from the `cardState` object.
+      * Then will call `setRemoveColumns()`, to add the `removedColumns` state object.
+* Went through fixed some of the css stylings and effects.
+  * Card Hover Effects.
+    * Now scales rather than shift
+  * Cleaned input forms.
+  * Fixed button content alignment.
+
+---
+
+
+
+
+
+---
+
+
+
 ## Jan 13 2021:
 ### What was done.
 * Boke up "Col.jsx" component:

@@ -24,43 +24,23 @@ const InnerColumn = ({
   return (
     <div
       ref={drop}
+      className="innerColumn"
       style={{
         backgroundColor: isOver ? Colors.neutral_accent : Colors.light,
         filter: isDragging ? "blur(1px)" : null,
-        minWidth: "15rem",
-        width: "40%",
-        maxWidth: "35rem",
-        minHeight: "15rem",
-        borderRadius: "4px",
-        margin: "0 auto",
-        marginLeft: "1rem",
         border: `1px solid ${Colors.base}`,
       }}
     >
       <div
+        className="columnHeader"
         style={{
           backgroundColor: isOver ? Colors.dark_accent : Colors.base,
-          display: "flex",
-          justifyContent: "space-around",
-          height: "3rem",
-          marginBottom: ".5rem",
         }}
       >
-        <h3
-          style={{
-            fontSize: "1.75rem",
-            color: Colors.light,
-            textDecoration: "underline",
-            fontWeight: "450",
-            marginTop: "0",
-            padding: ".5rem",
-          }}
-        >
-          {data.title}
-        </h3>
+        <h3 style={{ color: Colors.light }}>{data.title}</h3>
         <button
-          className="colMenu"
-          style={{ width: "2rem", height: "2rem" }}
+          className="addButton"
+          style={{ transform: "scale(0.75)", marginTop: "0.025rem" }}
           onClick={(e) => {
             e.preventDefault();
             setCardMenu(true);

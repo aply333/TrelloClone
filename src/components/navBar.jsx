@@ -44,6 +44,7 @@ const NavBar = ({ newCol }) => {
       </div>
     );
   };
+
   return (
     <div
       style={{
@@ -77,7 +78,7 @@ const NavBar = ({ newCol }) => {
         }}
       >
         <button
-          className="colMenu"
+          className="addButton"
           onClick={(e) => {
             e.preventDefault();
             setPopMenu(true);

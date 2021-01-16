@@ -4,11 +4,10 @@ const Board = ({children}) =>{
     return(
         <div style={{
             margin: "0 auto",
-            width: "100vw",
+            width:  "auto",
             display: "flex",
             overflow: "auto",
-            display: "flex",
-            justifyContent: "center"
+            paddingLeft: "2rem"
         }}>
             {children}
         </div>

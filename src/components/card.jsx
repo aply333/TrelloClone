@@ -24,7 +24,7 @@ const Card = ({data, setDragId, cardId, columnId}) => {
           filter: isDragging ? "blur(1px)" : null
         }}
         onMouseEnter={()=>{
-          setDragId([columnId,cardId])
+          setDragId([columnId, cardId, "card"])
         }}
       >
         <div
@@ -40,13 +40,14 @@ const Card = ({data, setDragId, cardId, columnId}) => {
             style={{
               color: Colors.neutral_accent,
               marginTop: "0px",
+              marginBottom: "0px"
             }}
           >
             {data.title}
           </h3>
           <p>{data.date}</p>
         </div>
-        <p>{data.description}</p>
+        <p className="cardContent">{data.description}</p>
       </div>
     
   );

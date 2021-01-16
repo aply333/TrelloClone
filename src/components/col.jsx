@@ -24,12 +24,13 @@ const Col = ({ data, columnId, newCard, setDragId, moveCard, moveColumn }) => {
     <div
       ref={drag}
       onMouseEnter={() => {
-        setDragId([columnId, 0]);
+        setDragId([columnId, 0, "col"]);
       }}
     >
       <div
         ref={drop}
         style={{
+          marginRight: "1rem",
           minWidth: "17rem",
           transition: "all ease 0.75s",
           marginLeft: isOver ? "5rem" : null,
